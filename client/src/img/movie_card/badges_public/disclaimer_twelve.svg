@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1045.347 431.5 31.048 31">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        font-size: 18px;
+        font-family: SegoeUI, Segoe UI;
+        letter-spacing: -0.134em;
+      }
+    </style>
+  </defs>
+  <g id="Disclaimer_douze" transform="translate(-269.5 -52)">
+    <path id="Tracé_3" data-name="Tracé 3" class="cls-1" d="M16.024,1A15,15,0,1,1,1,16,15.012,15.012,0,0,1,16.024,1Z" transform="translate(1314.347 483)"/>
+    <path id="Tracé_6" data-name="Tracé 6" class="cls-1" d="M1091.9,477.5h4.915" transform="translate(227.513 22.5)"/>
+    <text id="_12" data-name="12" class="cls-2" transform="translate(1321.388 504.871)"><tspan x="0" y="0">12</tspan></text>
+  </g>
+</svg>

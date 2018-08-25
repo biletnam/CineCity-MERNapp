@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="655.706 833.491 113.9 45.567">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: #e42f5b;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        font-size: 17px;
+      }
+
+      .cls-2, .cls-4 {
+        font-family: SegoeUI, Segoe UI;
+      }
+
+      .cls-4 {
+        font-size: 16px;
+      }
+    </style>
+  </defs>
+  <g id="Boutton_reserver" transform="translate(1.532 791.342)">
+    <rect id="Rectangle_5" data-name="Rectangle 5" class="cls-1" width="113.9" height="45.567" rx="3" transform="translate(654.174 42.15)"/>
+    <text id="Reserver" class="cls-2" transform="translate(688.952 69.263)"><tspan x="0" y="0">Reserver</tspan></text>
+    <path id="Tracé_49" data-name="Tracé 49" class="cls-3" d="M1630.9,723.089l5.053,20.211,4.421-1.137s-.126-2.463,1.832-3.095,3.221,1.642,3.221,1.642l4.484-1.642-5.178-19.768-4.358,1.074a3.129,3.129,0,0,1-1.895,3.221c-2.147.758-3.474-1.831-3.474-1.831Z" transform="translate(-967.032 -666.342)"/>
+    <text id="_" data-name="€" class="cls-4" transform="matrix(0.966, -0.259, 0.259, 0.966, 670.157, 71.489)"><tspan x="0" y="0">€</tspan></text>
+  </g>
+</svg>

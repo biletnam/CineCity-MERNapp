@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="6941 291 55 40">
+  <defs>
+    <style>
+      .cls-1, .cls-5 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #e42f5b;
+        stroke-width: 2px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #e42f5b;
+      }
+
+      .cls-3 {
+        font-size: 26px;
+        font-family: SegoeUI-SemilightItalic, Segoe UI;
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="calandar" transform="translate(6095)">
+    <g id="Rectangle_24" data-name="Rectangle 24" class="cls-1" transform="translate(846 291)">
+      <rect class="cls-4" width="55" height="40" rx="4"/>
+      <rect class="cls-5" x="1" y="1" width="53" height="38" rx="3"/>
+    </g>
+    <circle id="Ellipse_11" data-name="Ellipse 11" class="cls-2" cx="2.5" cy="2.5" r="2.5" transform="translate(860 296)"/>
+    <circle id="Ellipse_12" data-name="Ellipse 12" class="cls-2" cx="2.5" cy="2.5" r="2.5" transform="translate(883 296)"/>
+    <text id="_14" data-name="14" class="cls-3" transform="translate(860 323)"><tspan x="0" y="0">14</tspan></text>
+  </g>
+</svg>

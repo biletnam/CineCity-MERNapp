@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1242.9 434 73.1 24.7">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #e4e4e4;
+      }
+
+      .cls-2 {
+        stroke: #ebebeb;
+      }
+
+      .cls-3 {
+        fill: #ebebeb;
+        font-size: 10px;
+        font-family: SegoeUI-Bold, Segoe UI;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g id="DolbyAtmos" transform="translate(116 -34)">
+    <path id="Tracé_42" data-name="Tracé 42" class="cls-1" d="M1119,469h34.5v23.2H1119Z" transform="translate(8.4)"/>
+    <path id="Tracé_43" data-name="Tracé 43" class="cls-2" d="M1156.1,435v17.532h-5.143a8.568,8.568,0,0,1-6.857-8.571c0-7.325,6.857-8.961,6.857-8.961Z" transform="translate(2 37)"/>
+    <path id="Tracé_44" data-name="Tracé 44" class="cls-2" d="M1156.1,435v17.532h-5.143a8.568,8.568,0,0,1-6.857-8.571c0-7.325,6.857-8.961,6.857-8.961Z" transform="translate(2287.2 924.532) rotate(-180)"/>
+    <text id="DOLBY_ATMOS" data-name="DOLBY
+ATMOS" class="cls-3" transform="translate(1165 479)"><tspan x="0" y="0">DOLBY</tspan><tspan x="0" y="9">ATMOS</tspan></text>
+  </g>
+</svg>
