@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import Poster from './poster';
-
 import { connect } from 'react-redux';
 import { getAlafficheMovies } from '../../../../actions/movieAction';
 import PropTypes from 'prop-types';
@@ -22,15 +20,19 @@ class Carrousel extends Component {
   };
 
   render() {
-    const { movies } = this.props.alafficheMovies;
+    const movies = this.props.alafficheMovies;
+    console.log(this.props.alafficheMovies);
     return (
       <div className="poster_carrousel" >
-        {console.log(movies)}
-
-         {
-           movies.alafficheMovies(movies).map((movie, index) => <Poster  />)
-         }
-
+      {
+        movies.map((movie, index) =>
+          <div key={movie._id}
+               data-key={movie._id}
+               className="poster"
+               onClick={this.onClick}
+               style={{backgroundImage:`url(${movie.img})`}}>
+          </div>
+      )}
       </div>
     );
   }
@@ -38,18 +40,11 @@ class Carrousel extends Component {
 
 Carrousel.propTypes = {
   getAlafficheMovies: PropTypes.func.isRequired,
-  alafficheMovies: PropTypes.object.isRequired
+  alafficheMovies: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
-  alafficheMovies: state.alafficheMovies
+  alafficheMovies: state.alafficheMovies.alafficheMovies
 })
 
 export default connect(mapStateToProps, { getAlafficheMovies })(Carrousel);
-
-// <div key={movie._id}
-//      data-key={movie._id}
-//      className="poster"
-//      onClick={this.onClick}
-//      style={{backgroundImage:`url(${movie.poster})`}}>
-// </div>
