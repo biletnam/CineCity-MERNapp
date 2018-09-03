@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import dateFormating from '../../dateFormating';
-import * as moment from 'moment';
+import CurrentDate from './date';
 
 //IMAGES IMPORT
 import logo from '../../img/header/logo_menu.svg';
@@ -21,13 +20,6 @@ class Header extends Component {
   }
 
   render() {
-
-    const currentDate = moment().format();
-    const formatedDate = dateFormating(currentDate);
-
-    String.prototype.capitalize = function() {
-      return this.charAt(0).toUpperCase() + this.slice(1);
-    }
 
     return (
       <header className="">
@@ -52,10 +44,7 @@ class Header extends Component {
             }
           </div>
         </nav>
-        <div className="date">
-          <p className="day">{formatedDate.dayOfWeek.capitalize()} {formatedDate.dayOfMonth}</p>
-          <p className="year">{formatedDate.month.capitalize()}<br />{formatedDate.year}</p>
-        </div>
+        <CurrentDate />
       </header>
     )
   }

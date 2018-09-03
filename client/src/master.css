@@ -209,7 +209,7 @@ h1 {
   justify-content: center;
   left: 47%;
 
-  min-width: 120px;
+  min-width: 140px;
 
   opacity: 0;
   animation: date 0.5s forwards;

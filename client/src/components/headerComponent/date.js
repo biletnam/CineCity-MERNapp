@@ -8,10 +8,14 @@ class CurrentDate extends Component {
     var currentDate = moment().format();
     var formatedDate = dateFormating(currentDate);
 
+    String.prototype.capitalize = function() {
+      return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+
     return (
-      <div className="date date_ms">
-        <p className="day">{formatedDate.dayOfWeek} {formatedDate.dayOfMonth}</p>
-        <p className="year">{formatedDate.month}<br />{formatedDate.year}</p>
+      <div className="date">
+        <p className="day">{formatedDate.dayOfWeek.capitalize()} {formatedDate.dayOfMonth}</p>
+        <p className="year">{formatedDate.month.capitalize()}<br />{formatedDate.year}</p>
       </div>
     )
   }

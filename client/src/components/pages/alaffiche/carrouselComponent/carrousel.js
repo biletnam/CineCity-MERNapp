@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+//REDUX CONNECT
 import { connect } from 'react-redux';
 import { getAlafficheMovies } from '../../../../actions/movieAction';
 import PropTypes from 'prop-types';
@@ -21,18 +22,17 @@ class Carrousel extends Component {
 
   render() {
     const movies = this.props.alafficheMovies;
-    console.log(this.props.alafficheMovies);
     return (
       <div className="poster_carrousel" >
       {
         movies.map((movie, index) =>
-          <div key={movie._id}
+            <div key={movie._id}
                data-key={movie._id}
                className="poster"
                onClick={this.onClick}
-               style={{backgroundImage:`url(${movie.img})`}}>
-          </div>
-      )}
+               style={{backgroundImage:`url(${movie.poster})`}}>
+            </div>)
+      }
       </div>
     );
   }
