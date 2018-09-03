@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CurrentDate from './date';
+import Date from './date';
+import * as moment from 'moment';
 
 //IMAGES IMPORT
 import logo from '../../img/header/logo_menu.svg';
@@ -20,6 +21,8 @@ class Header extends Component {
   }
 
   render() {
+
+    var date = moment();
 
     return (
       <header className="">
@@ -44,7 +47,7 @@ class Header extends Component {
             }
           </div>
         </nav>
-        <CurrentDate />
+        <Date date={date} />
       </header>
     )
   }

@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
-import dateFormating from '../../dateFormating';
 import * as moment from 'moment';
+import 'moment/locale/fr';
 
-class CurrentDate extends Component {
+//SETTING MOMENT.JS
+moment.locale('fr');
+
+class Date extends Component {
   render() {
 
-    var currentDate = moment().format();
-    var formatedDate = dateFormating(currentDate);
+    var currentDate = this.props.date;
+
+    const formatedDate = (currentDate) => {
+
+      var mom = moment(currentDate);
+
+      var DOW = moment(mom).format("ddd");
+      var DOM = moment(mom).format("D");
+      var M = moment(mom).format("MMMM");
+      var Y = moment(mom).format("YYYY");
+
+      var formated = {
+        "dayOfWeek": DOW,
+        "dayOfMonth": DOM,
+        "month": M,
+        "year": Y
+      };
+      return formated;
+    }
 
     String.prototype.capitalize = function() {
       return this.charAt(0).toUpperCase() + this.slice(1);
@@ -14,11 +34,11 @@ class CurrentDate extends Component {
 
     return (
       <div className="date">
-        <p className="day">{formatedDate.dayOfWeek.capitalize()} {formatedDate.dayOfMonth}</p>
-        <p className="year">{formatedDate.month.capitalize()}<br />{formatedDate.year}</p>
+        <p className="day">{formatedDate(currentDate).dayOfWeek.capitalize()} {formatedDate(currentDate).dayOfMonth}</p>
+        <p className="year">{formatedDate(currentDate).month.capitalize()}<br />{formatedDate(currentDate).year}</p>
       </div>
     )
   }
 }
 
-export default CurrentDate;
+export default Date;
