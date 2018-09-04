@@ -21,7 +21,7 @@ router.get('/', (req,res) => {
 //@access Public
 router.get('/:id', (req,res) => {
   movie.findById(req.params.id)
-    .then(movie => res.status(200).json(oneMovie))
+    .then(movie => res.status(200).json(movie))
 });
 
 //@route  POST api/movies

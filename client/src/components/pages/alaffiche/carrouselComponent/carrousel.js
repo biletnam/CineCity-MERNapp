@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 //REDUX CONNECT
 import { connect } from 'react-redux';
-import { getAlafficheMovies } from '../../../../actions/movieAction';
+import { getAlafficheMovies, getMovie } from '../../../../actions/movieAction';
 import PropTypes from 'prop-types';
 
 class Carrousel extends Component {
@@ -18,20 +18,24 @@ class Carrousel extends Component {
       poster.classList.remove('poster_selected');
     });
     e.target.classList.add('poster_selected');
+    this.props.getMovie(e.currentTarget.dataset.key);
   };
 
+
   render() {
+
     const movies = this.props.alafficheMovies;
+
     return (
       <div className="poster_carrousel" >
       {
         movies.map((movie, index) =>
-            <div key={movie._id}
+          <div key={movie._id}
                data-key={movie._id}
-               className="poster"
+               className='poster '
                onClick={this.onClick}
                style={{backgroundImage:`url(${movie.poster})`}}>
-            </div>)
+          </div>)
       }
       </div>
     );
@@ -40,11 +44,13 @@ class Carrousel extends Component {
 
 Carrousel.propTypes = {
   getAlafficheMovies: PropTypes.func.isRequired,
-  alafficheMovies: PropTypes.array.isRequired
+  alafficheMovies: PropTypes.array.isRequired,
+  movie: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-  alafficheMovies: state.alafficheMovies.alafficheMovies
+  alafficheMovies: state.alafficheMovies.alafficheMovies,
+  movie: state.alafficheMovies.movie
 })
 
-export default connect(mapStateToProps, { getAlafficheMovies })(Carrousel);
+export default connect(mapStateToProps, { getAlafficheMovies, getMovie })(Carrousel);

@@ -1,1 +1,2 @@
 export const GET_ALAFFICHE_MOVIES = 'GET_ALAFFICHE_MOVIES';
+export const GET_MOVIE = 'GET_MOVIE';
