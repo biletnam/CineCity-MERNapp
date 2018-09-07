@@ -14,12 +14,17 @@ import btn_play from '../../../../img/movie_card/rating/btn_play.svg';
 import btn_resa from '../../../../img/btn_resa.svg';
 import logo_allocine from '../../../../img/movie_card/rating/logo_allocine.svg';
 
+//IMPORT RESERVATION BLOCK Component
+import DayBlock from './dayBlockResa';
+
 class MovieCard extends Component {
+
   render() {
 
     const movie = this.props.movie;
     const actors = [this.props.movie.with];
     const director = [this.props.movie.from];
+    const seance = [this.props.movie.seance];
 
     function versionBadgesFetching(vf = movie.vf, vo = movie.vo, two_dim = movie.two_dim, three_dim = movie.three_dim) {
       var badges = [];
@@ -48,6 +53,22 @@ class MovieCard extends Component {
       badges.push(<div className={'badge_genre ' + second_genre}></div>);
 
       return badges;
+    }
+
+    function ratingStars(rate = movie.rating) {
+      const maxRate = 5;
+      const emptyStars = maxRate - rate;
+      var stars = [];
+
+      for(let i = 0; i < rate; i++){
+        stars.push(<div className="empty_star filled_star" alt="Etoile pleine"></div>);
+      }
+
+      for(let i = 0; i < emptyStars; i++){
+        stars.push(<div className="empty_star" alt="Etoile pleine"></div>);
+      }
+
+      return stars;
     }
 
     return (
@@ -95,33 +116,18 @@ class MovieCard extends Component {
            </span></p>
           </div>
           <div className="movie_info date_rating">
-            <p>Sortie le <span className="date_out">{moment(this.props.release_date).format("Do MMMM YYYY")}</span></p>
+            <p>Sortie le <span className="date_out">{moment(this.props.movie.release_date ? this.props.movie.release_date : '-').format("Do MMMM YYYY")}</span></p>
             <div className="rating_block">
               <img className="logo_allocine" src={logo_allocine} alt="Note Allociné" width="30px" height="30px" />
-              <div className="empty_star filled_star" alt="Etoile pleine"></div>
-              <div className="empty_star" alt="Etoile vide"></div>
-              <div className="empty_star" alt="Etoile vide"></div>
-              <div className="empty_star" alt="Etoile vide"></div>
-              <div className="empty_star" alt="Etoile vide"></div>
+               {ratingStars()}
             </div>
           </div>
           <div className="horaire_seance">
-            <div className="day_block_resa">
-              <h5 className="date_block_resa">Sam. 2 juin</h5><br/>
+            {
+              seance.map((day, index) =>
+                <DayBlock day={day}/>
+            )}
 
-              <div className="badge_horaire resa_selected">
-                <p className="hour_resa">19h25</p>
-                <span className="separation"></span>
-                <div className="format_badge_resa"></div>
-                <p className="version_badge_resa">VF</p>
-              </div>
-              <div className="badge_horaire">
-                <p className="hour_resa">20h30</p>
-                <span className="separation"></span>
-                <div className="format_badge_resa"></div>
-                <p className="version_badge_resa">VO</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -139,3 +145,20 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, { getMovie })(MovieCard);
+
+// <div className="day_block_resa">
+//   <h5 className="date_block_resa">Sam. 2 juin</h5><br/>
+//
+//   <div className="badge_horaire resa_selected">
+//     <p className="hour_resa">19h25</p>
+//     <span className="separation"></span>
+//     <div className="format_badge_resa"></div>
+//     <p className="version_badge_resa">VF</p>
+//   </div>
+//   <div className="badge_horaire">
+//     <p className="hour_resa">20h30</p>
+//     <span className="separation"></span>
+//     <div className="format_badge_resa"></div>
+//     <p className="version_badge_resa">VO</p>
+//   </div>
+// </div>

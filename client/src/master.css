@@ -619,6 +619,12 @@ h1 {
         background-image: url("img/movie_card/badges_format/two_d.svg");
         background-repeat: no-repeat;
       }
+        .twoD{
+          background-image: url("img/movie_card/badges_format/two_d.svg");
+        }
+        .threeD{
+          background-image: url("img/movie_card/badges_format/three_d.svg");
+        }
       /*ANIMATING BADGES*/
       .resa_selected{
         position: relative;
