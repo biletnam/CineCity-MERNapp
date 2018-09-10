@@ -4,31 +4,11 @@ import * as moment from 'moment';
 class DayBlock extends Component {
  constructor(props){
    super(props);
-   this.state = {
-     day: {
-            "day": "2018-15-08T20:30:00+02:00",
-            "seance": [
-                {
-                    "hour": "2018-15-08T19:30:00+02:00",
-                    "place": 60,
-                    "format": "2D",
-                    "version": "VF"
-                },
-                {
-                    "hour": "2018-15-08T20:30:00+02:00",
-                    "place": 45,
-                    "format": "3D",
-                    "version": "V0"
-                }
-            ]
-        }
-  }
 }
 
-
  render() {
-   console.log(day);
-   const day = this.state.day;
+
+   const day = this.props.Day;
    var date = moment(day.day).format("ddd D MMM");
    var seance = day.seance;
    return (

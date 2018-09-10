@@ -269,7 +269,6 @@ h1 {
   cursor: pointer;
 }
 .poster_selected{
-  outline: 4pt solid #E42F5B;
   transition-timing-function: linear;
   transition-duration: 0.2s;
 }
