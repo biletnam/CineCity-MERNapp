@@ -19,6 +19,16 @@ import DayBlock from './dayBlockResa';
 
 class MovieCardContent extends Component {
 
+  blurredBackgorundImage = () => {
+    const movie = this.props.movie;
+
+    var background = document.querySelector(".blur");
+    background.style.backgroundImage = `url(${movie.img})`;
+    if (background.classList.contains('blurFadeInPaused')) {
+      background.classList.remove('blurFadeInPaused');
+    }
+  }
+
   render() {
       const movie = this.props.movie;
       const actors = [this.props.movie.with];
@@ -49,8 +59,8 @@ class MovieCardContent extends Component {
 
         var badges = [];
 
-        badges.push(<div className={'badge_genre ' + first_genre}></div>);
-        badges.push(<div className={'badge_genre ' + second_genre}></div>);
+        badges.push(<div className={'badge_genre'}>{first_genre}</div>);
+        badges.push(<div className={'badge_genre'}>{second_genre}</div>);
 
         return badges;
       }
@@ -71,6 +81,12 @@ class MovieCardContent extends Component {
         return stars;
       }
 
+      function dAtmos(){
+        if(movie.d_atmos === true){
+          return <div className="d_atmos"></div>
+        }
+      }
+
     return (
       <div className="movie_card">
         <div className="movie_card_left">
@@ -79,29 +95,28 @@ class MovieCardContent extends Component {
               <img src={btn_play} className="btn_play" alt="Play - Bande Annonce" />
             </a>
           </div>
-          <div className="bloc_resa">
-            <p className="phrase_resa">
-              <span className="nbr_place">60 places</span> sont encore disponibles à la réservation pour
-                <span className="date_meeting">Samedi 2 Juin à 19h25</span>. Il reste
-                  <span className="time_left">3 heures et 45 minutes pour réserver vos places.</span>
-                </p>
-                <img className="btn_resa click_to_action"
-                  src={btn_resa}
-                  alt="Boutton Reserver" />
-              </div>
+            <div className="bloc_resa">
+              <p className="phrase_resa">
+                Il reste <span className="nbr_place">60 places</span> disponibles à la réservation pour cette séance.
+              </p>
+              <img className="btn_resa click_to_action"
+                   src={btn_resa}
+                   alt="Boutton Reserver" />
             </div>
-            <div className="movie_card_right">
+            </div>
+        <div className="movie_card_right">
               <div className="header_movie_card">
-                <h3 className="title_mc">{this.props.movie.title}<div className="disclaimer moins_douze"></div></h3>
+                <h3 className="title_mc">{this.props.movie.title}</h3>
                 <div className="badges_format_container">
                   {versionBadgesFetching()}
+                  {dAtmos()}
                 </div>
                 <div className="movie_genre">
                   {genreBadgesFetching()}
                 </div>
               </div>
               <div className="img_movie_card_ms click_to_action" style={{backgroundImage:`url(${this.props.movie.img})`}}>
-                <img src={btn_play} className="btn_play" alt="Play - Bande Annonce" />
+                <img src={btn_play} className="btn_play" alt="Lien vers la Bande Annonce" />
               </div>
               <p className="synopsis">
                 {this.props.movie.synopsis}
@@ -115,25 +130,30 @@ class MovieCardContent extends Component {
                 <ReactJoin>{actors}</ReactJoin>
               </span></p>
             </div>
-            <div className="movie_info date_rating">
+          <div className="movie_info date_rating">
               <p>Sortie le <span className="date_out">{moment(this.props.movie.release_date ? this.props.movie.release_date : '-').format("Do MMMM YYYY")}</span></p>
               <div className="rating_block">
                 <img className="logo_allocine" src={logo_allocine} alt="Note Allociné" width="30px" height="30px" />
                 {ratingStars()}
               </div>
             </div>
-            <div className="horaire_seance">
+          <div className="horaire_seance">
               {
                 seance.map((day, index) => {
-                  console.log(day);
                   return <DayBlock key={index} Day={day}/>;
                 })
               }
 
             </div>
-          </div>
         </div>
+      </div>
     )
+  }
+  componentDidMount(){
+    this.blurredBackgorundImage();
+  }
+  componentDidUpdate(){
+    this.blurredBackgorundImage();
   }
 }
 

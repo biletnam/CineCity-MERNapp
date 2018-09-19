@@ -42,7 +42,9 @@ class Header extends Component {
           <div className="menu">
             {
               this.state.navBarElements.map(function(name, i){
-                return <a key={i} href="" className="">{name}</a>
+                return <li>
+                          <a key={i} href="" className="">{name}</a>
+                       </li>
               })
             }
           </div>

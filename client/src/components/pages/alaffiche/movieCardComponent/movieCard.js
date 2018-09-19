@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { getMovie } from '../../../../actions/movieAction';
 import PropTypes from 'prop-types';
 
+//IMPORT LOADING GIF
+import LogoLoading from '../../../../img/loadingIndicator.gif';
+
 import MovieCardContent from  './movieCardContent';
 
 class MovieCard extends Component {
@@ -12,13 +15,16 @@ class MovieCard extends Component {
   render() {
     var content;
     if (!this.props.movie.title) {
-      return content = <h1>Veuillez sélectionner un film.</h1>;
+      return content = <div className="moviecard_empty_alert">
+                          <h2>Selectionnez votre film !</h2>
+                          <p>CinéCity a listé pour vous les films projectionné ces 10 prochains jours.</p>
+                          <img src={LogoLoading} height="80" width="80"/>
+                       </div>;
     }
     else {
       return content = <MovieCardContent />;
     }
 
-    return({content})
   }
 }
 

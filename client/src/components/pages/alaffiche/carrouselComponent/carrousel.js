@@ -27,17 +27,20 @@ class Carrousel extends Component {
     const movies = this.props.alafficheMovies;
 
     return (
-      <div className="poster_carrousel" >
-      {
-        movies.map((movie, index) =>
-          <div key={movie._id}
-               data-key={movie._id}
-               className='poster '
-               onClick={this.onClick}
-               style={{backgroundImage:`url(${movie.poster})`}}>
-          </div>)
-      }
-      </div>
+        <div className="poster_carrousel">
+          <div className="poster_container">
+
+            {
+              movies.map((movie, index) =>
+                <div key={movie._id}
+                     data-key={movie._id}
+                     className='poster '
+                     onClick={this.onClick}
+                     style={{backgroundImage:`url(${movie.poster})`}}>
+                </div>)
+            }
+          </div>
+        </div>
     );
   }
 }
