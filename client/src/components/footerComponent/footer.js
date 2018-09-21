@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //Import react-icons
-import { FaFacebook, FaTwitterSquare, FaEnvelopeSquare, FaEnvelope} from 'react-icons/fa';
+import { FaFacebook, FaTwitterSquare, FaEnvelopeSquare } from 'react-icons/fa';
 
 class Footer extends Component {
   render() {

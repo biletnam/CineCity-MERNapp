@@ -18,7 +18,7 @@ class MovieCard extends Component {
       return content = <div className="moviecard_empty_alert">
                           <h2>Selectionnez votre film !</h2>
                           <p>CinéCity a listé pour vous les films projectionné ces 10 prochains jours.</p>
-                          <img src={LogoLoading} height="80" width="80"/>
+                          <img alt="logo" src={LogoLoading} height="80" width="80"/>
                        </div>;
     }
     else {

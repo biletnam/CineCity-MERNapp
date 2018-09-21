@@ -35,20 +35,6 @@
     opacity: 1;
   }
 }
-@keyframes encoche_poster {
-  0%{
-    opacity: 0;
-    top: -40px;
-  }
-  50%{
-    opacity: 1;
-    top: -25px;
-  }
-  100%{
-    opacity: 1;
-    top: -30px;
-  }
-}
 @keyframes encoche_resa {
   0%{
     opacity: 0;
@@ -57,14 +43,6 @@
   100%{
     opacity: 1;
     top: -20px;
-  }
-}
-@keyframes link {
-  0%{
-      height: 0px;
-  }
-  100%{
-    height: 33px;
   }
 }
 @keyframes FadeIn {
@@ -408,7 +386,7 @@ h1 {
   opacity: 0;
 
   width:100%;
-  height: 450px;
+  height: 330px;
   padding: 25px;
 
   background-color: #12151E;
@@ -432,7 +410,7 @@ h1 {
 
       width: 100%;
       min-width: 370px;
-      height: 320px;
+      height: 100%;
 
       background-color: #1c1f29;
       background-size: cover;
@@ -449,33 +427,16 @@ h1 {
       height: 70px;
     }
 
-    .bloc_resa{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-
-      width: 90%;
+    .btn_resa{
+      position: relative;
+      height: 50px;
+      width: 100px;
+      margin-right: 15px;
     }
-    @media (max-width: 1350px) {
-      .bloc_resa{flex-direction: column;}
-    }
-    .bloc_resa img{
-      width: 17%;
-      max-width: 121px;
-      min-width: 95px;
-    }
-    .movie_card_left p{
-      min-width: 325px;
-      width: 70%;
-
-      text-align: center;
-      line-height: 30px;
-      transition: unset;
-    }
-    .phrase_resa{position: relative;}
-    .movie_card_left span{
-      font-family: "champagne_B";
+    .desactivated{
+      cursor: default;
+      clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+      filter: grayscale(100%);
     }
 
 
@@ -681,19 +642,7 @@ h1 {
       .resa_selected:hover{
         background-color: #E42F5B;
       }
-        .resa_selected:before{
-          content: '';
-          position: absolute;
-          opacity: 0;
-          left: 45%;
-          z-index: 10;
-          height: 17px;
-          width: 17px;
-          background-image: url("img/posters/encoche_poster.svg");
-          background-repeat: no-repeat;
 
-          animation: encoche_resa 0.25s forwards;
-        }
     /*SHAPING DAY BLOCK*/
     .day_block_resa{
       display: flex;
@@ -701,7 +650,7 @@ h1 {
       justify-content: space-between;
       align-items: center;
 
-      height: 125px;
+      height: 100px;
 
       border-left: 1px solid rgb(235, 235, 235);
       border-right: 1px solid rgb(235, 235, 235);
@@ -794,6 +743,9 @@ footer{
     .mail_input::placeholder{
       color: White;
     }
+    .mail_input:focus::placeholder{
+      color: transparent;
+    }
     .mail_input:focus{
       width: 250px;
       background: transparent;
@@ -834,7 +786,7 @@ footer{
   flex-direction: row;
   justify-content: space-between;
   width: 50%;
-  max-width: 600px;
+  max-width: 500px;
   min-width: 300px;
   margin: auto;
 
