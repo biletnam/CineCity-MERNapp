@@ -59,7 +59,8 @@
 
 body {
   font-family: "champagne_R", sans-serif;
-  margin: 0 40px 0 0;
+  margin: 0;
+  overflow-x: hidden;
 
   background-color: #0F1017;
   transition: background-color 0.5s ease;
@@ -93,7 +94,7 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-top: -20px;
   margin-left: 10px;
 
@@ -256,6 +257,26 @@ h1 {
     line-height: normal;
   }
 
+/*Shopping basket*/
+.bucket_button{
+  cursor: pointer;
+
+  margin-left: 15px;
+
+  filter: brightness(75%);
+  filter: saturate(75%);
+
+  transition: 0.4s;
+}
+  .bucket_button:hover {
+
+    filter: brightness(100%);
+    filter: saturate(100%);
+
+    transition: 0.4s;
+  }
+
+
 /*POSTERS*/
 
 .poster_carrousel{
@@ -384,8 +405,9 @@ h1 {
   justify-content: space-between;
   position: relative;
   opacity: 0;
+  margin: auto;
 
-  width:100%;
+  width:95%;
   height: 330px;
   padding: 25px;
 
@@ -432,11 +454,13 @@ h1 {
       height: 50px;
       width: 100px;
       margin-right: 15px;
+      transition: 1s;
     }
     .desactivated{
+      opacity: 0.7;
       cursor: default;
-      clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
       filter: grayscale(100%);
+      transition: 1s;
     }
 
 
@@ -601,7 +625,6 @@ h1 {
         height: 35px;
         width: 140px;
 
-        border-radius: 3px;
         background-color: rgb(40, 42, 54);
 
         transition: 0.2s;
@@ -635,6 +658,7 @@ h1 {
       /*ANIMATING BADGES*/
       .resa_selected{
         position: relative;
+        border-radius: 3px;
         background-color: #E42F5B;
         transition-timing-function: linear;
         transition-duration: 0.2s;
@@ -963,9 +987,7 @@ footer{
     margin:5px 15px 0px 15px
   }
 
-  h1{
-    min-width: 200px;
-  }
+  nav h1{min-width: 200px;}
 
     /*MENU BUTTONS*/
   .btn_drop{
@@ -1006,7 +1028,319 @@ footer{
         font-size: 25px;
         line-height: 25px;
       }
-
-    /*HIDE FOOTER MENU*/
-    .nav_footer{display: none;}
 }
+
+/*RESERVATION MODAL*/
+.resaModal{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+
+  margin-left: -175px;
+  margin-top: -175px;
+  left: 50%;
+  top: 50vh;
+
+  padding: 20px;
+  width: 350px;
+
+  background-color: rgb(20, 21, 27);
+  border-radius: 2px;
+}
+ .resaModal h3 {
+   font-weight: normal;
+   text-align: center;
+ }
+.modalBlur{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+  background-color: rgba(11, 17, 32, 0.53);
+  opacity: 0;
+  animation: FadeIn 1s forwards;
+  transition-duration: 0.5s
+}
+
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.resaTitle{
+  position: relative;
+
+  width: 90px;
+  margin: auto;
+
+  font-size: 21px;
+  line-height: 0px;
+  margin-bottom: 17px;
+}
+.resaTitle::before{
+  content: '';
+  position: absolute;
+
+  height: 1px;
+  width: 110px;
+
+  right: -130px;
+  top: 50%;
+
+  background: rgb(224, 224, 224);
+}
+.resaTitle::after{
+  content: '';
+  position: absolute;
+
+  height: 1px;
+  width: 110px;
+
+  left: -130px;
+  top: 50%;
+
+  background: rgb(224, 224, 224);
+}
+
+.movieTitle{
+  font-size: 20px;
+  line-height: 0px;
+  align-self: center;
+}
+ .movieSubtitle{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   font-size: 12px;
+ }
+
+.placeCollectContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 75%;
+}
+
+.placeClickCollect{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin:15px auto;
+}
+
+label{color: rgb(215, 215, 215);}
+
+.price{
+  font-weight: bold;
+  line-height: 0px;
+  padding: 0;
+  margin: 10px;
+}
+
+.clickToCollect{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.collect{
+  cursor: pointer;
+  color: black;
+  padding: 2px 5px 2px 5px;
+  background: rgb(226, 226, 226);
+  border-radius: 3px 0 0 3px;
+  transition: 0.2s;
+}
+  .collect:hover{
+    background: rgb(210, 210, 210);
+    transition: 0.2s;
+  }
+  .plus{border-radius: 0px 3px 3px 0;}
+  .sousTotal{
+    color: rgb(17, 17, 17);
+    background-color: rgb(255, 255, 255);
+    padding: 2px 5px 2px 5px;
+  }
+  .moins{padding: 2px 6px 2px 6px;}
+
+.totalContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+  .totalContainer p {
+    margin: 0;
+    font-size: 22px;
+  }
+  .total{
+    height: 17px;
+    color: rgb(32, 32, 32);
+
+    margin: 0 11px 0 11px;
+    padding: 2px 2px 2px 20px;
+
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+  }
+
+.remainingPlaces{
+  margin: 25px auto 0px auto;
+  text-align: center;
+  opacity: 0.8;
+  font-size: 12px;
+}
+
+.nextButton{
+  display: block;
+  cursor: pointer;
+  padding: 5px 15px 5px 15px;
+  margin: 7px auto auto auto;
+
+  font-size: 17px;
+  font-family: "champagne_R";
+
+  border: none;
+  border-radius: 2px;
+
+  background-color: rgb(222, 44, 103);
+  transition-duration: 0.4s;
+}
+  .nextButton:hover{
+    background-color: rgb(187, 38, 88);
+    transition-duration: 0.4s;
+  }
+
+/*BASKET MODAL*/
+.basketModal{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+
+  margin-left: -175px;
+  margin-top: -175px;
+  left: 50%;
+  top: 50vh;
+
+  padding: 20px;
+  width: 350px;
+
+  background-color: rgb(20, 21, 27);
+  border-radius: 2px;
+}
+.emptyBasket{
+  text-align: center;
+  margin: auto;
+}
+.basketHeader{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+  .basketHeader h3 {
+    line-height: 0;
+    font-weight: normal;
+  }
+
+.listItems{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  border-top: 1px solid rgb(218, 218, 218);
+  border-bottom: 1px solid rgb(218, 218, 218);
+
+  width: 80%;
+
+  padding: 15px;
+}
+
+.item{
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  width: 100%;
+}
+  .bucketItemPoster{
+    width: 70px;
+    height: 100px;
+
+    border: 2px solid #E42F5B;
+
+  }
+  .placeList{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100px;;
+
+    margin-left: 15px;
+
+    text-align: left;
+  }
+    .itemDate{font-size: 12px;}
+    .itemInfo{
+      font-size: 12px;
+      line-height: 0;
+      letter-spacing: 0.4px;
+    }
+    .itemTitle{
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 0px;
+    }
+      .itemNbrePlace{
+        font-weight: bold;
+        font-size: 15px;
+      }
+  .deleteTotal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+  .deleteItem{
+    cursor: pointer;
+
+    color: rgb(222, 44, 103);
+    font-size: 35px;
+    text-align: center;
+    line-height: 0px;
+
+    transition-duration: 0.4s;
+  }
+    .deleteItem:hover{
+      color: rgb(150, 46, 81);
+      transition-duration: 0.4s;
+    }
+  .itemTotal{
+    align-self: center;
+  }
+
+.checkoutButton{
+  padding: 5px 15px 5px 15px;
+  margin-top: 7px;
+
+  font-size: 16px;
+  font-family: "champagne_R";
+
+  border: none;
+  border-radius: 2px;
+
+  color: white;
+  background-color: rgb(222, 44, 103);
+}
+  .ButtonDesactivated{background-color: rgb(71, 71, 71);}

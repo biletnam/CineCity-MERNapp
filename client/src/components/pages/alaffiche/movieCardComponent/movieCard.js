@@ -12,6 +12,10 @@ import MovieCardContent from  './movieCardContent';
 
 class MovieCard extends Component {
 
+  handleModalCall = (modalCode, dayId, seanceId) => {
+    this.props.handleModalCall(modalCode, dayId, seanceId);
+  }
+
   render() {
     var content;
     if (!this.props.movie.title) {
@@ -22,7 +26,7 @@ class MovieCard extends Component {
                        </div>;
     }
     else {
-      return content = <MovieCardContent />;
+      return content = <MovieCardContent handleModalCall={this.handleModalCall.bind(this)} />;
     }
 
   }

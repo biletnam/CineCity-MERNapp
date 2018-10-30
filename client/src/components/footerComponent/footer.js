@@ -22,13 +22,13 @@ class Footer extends Component {
         </div>
 
         <div className="footer_socialLinks">
-          <a href="">
+          <a target="_blank" href="https://www.pinterest.fr/maximevaydie/cin%C3%A9city-projet-perso/">
             <FaFacebook className="social_link"/>
           </a>
-          <a href="">
+          <a target="_blank" href="https://www.pinterest.fr/maximevaydie/cin%C3%A9city-projet-perso/">
             <FaTwitterSquare className="social_link"/>
           </a>
-          <a href="">
+          <a target="_blank" href="https://www.pinterest.fr/maximevaydie/cin%C3%A9city-projet-perso/">
             <FaEnvelopeSquare className="social_link"/>
           </a>
         </div>

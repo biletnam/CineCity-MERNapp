@@ -5,6 +5,9 @@ import * as moment from 'moment';
 //array.join() for react
 import ReactJoin from 'react-join'
 
+//Typy
+import t from 'typy';
+
 //REDUX CONNECT
 import { connect } from 'react-redux';
 import { getMovie } from '../../../../actions/movieAction';
@@ -16,19 +19,25 @@ import btn_resa from '../../../../img/btn_resa.svg';
 import logo_allocine from '../../../../img/movie_card/rating/logo_allocine.svg';
 
 //IMPORT RESERVATION BLOCK Component
-import DayBlock from './dayBlockResa';
-
-//IMPORT SEARCH SEANCE IN JSON DOCUMENT METHOD
-
+import DayBlock from './dayBlock';
 
 class MovieCardContent extends Component {
   constructor(props) {
     super(props)
+    this.handleBadgeSelected = this.handleBadgeSelected.bind(this);
     this.state = {
+      badgeSelected: false,
+      dayid: '',
+      seanceid: ''
+    }
+  }
+
+  componentWillReceiveProps(){
+    this.setState({
       badgeSelected: false,
       day: '',
       seance: ''
-    }
+    })
   }
 
   blurredBackgorundImage = () => {
@@ -42,47 +51,57 @@ class MovieCardContent extends Component {
     }
   }
 
-  badgeSelected = (seanceId, dayId, movie = this.props.movie) => {
-    //GET DAY AND SEANCE OF CLICKED BAGDE
-    var seanceArray = movie.seance;
-    var jour;
-    for (var i = 0; i < seanceArray.length; ++i){
-      if (seanceArray[i].id == dayId){
-        jour = seanceArray[i];
-      }
-    };
-
-    if (jour) {
-      var seance;
-      for (var i = 0; i < jour.seance.length; ++i){
-        if (jour.seance[i].id == seanceId){
-          seance = jour.seance[i];
-        }
-      }
-    } else {
-      console.log("Jour n'est pas défini." + jour);
-    }
-
+  handleBadgeSelected = (seanceId, dayId) => {
     //SETTING STATE FOR SELECTED BADGE
     this.setState({
       badgeSelected: true,
-      day: jour,
-      seance: seance
+      dayid: dayId,
+      seanceid: seanceId
     })
   }
 
-  handleResaBtnClick = () => {
-    console.log("Reservation pour la séance :");
-    console.log(this.state.seance);
+  handleResaBtnClick = (e, day = this.state.dayid, seance = this.state.seanceid) => {
+    if (e){
+      var modalCode = e.target.getAttribute("data-modal");
+      this.props.handleModalCall(modalCode, day, seance);
+    }
   }
-
 
   render() {
       //FETCHING DATA FUNCTIONS
       const movie = this.props.movie;
       const actors = [this.props.movie.with];
       const director = [this.props.movie.from];
-      const seance = this.props.movie.seance;
+      const seance  = this.props.movie.seance[0];
+      const handleBadgeSelected = this.handleBadgeSelected.bind(this);
+      const badgeSelected = this.state.badgeSelected;
+
+
+      function getDays(seance, handleBadgeSelected, badgeSelected){
+        var daysIdArray = [];
+
+        for(let i = 0; i < Object.keys(seance).length; i++){
+          daysIdArray.push(Object.keys(seance)[i]);
+        }
+
+        var dayBlockArray = []
+
+        daysIdArray.map((day, index) => {
+
+          var completeDay = t(seance, day).safeObject;
+
+          return dayBlockArray.push(
+            <DayBlock key={index}
+                      Day={completeDay}
+                      date={completeDay.day}
+                      handleBadgeSelected={handleBadgeSelected}
+                      badgeselected={badgeSelected}/>
+          )
+        });
+
+        return dayBlockArray;
+
+      }
 
       function versionBadgesFetching(vf = movie.vf, vo = movie.vo, two_dim = movie.two_dim, three_dim = movie.three_dim) {
         var badges = [];
@@ -104,7 +123,6 @@ class MovieCardContent extends Component {
       }
 
       function genreBadgesFetching(first_genre = movie.first_genre, second_genre = movie.second_genre) {
-
         var badges = [];
 
         badges.push(<div className={'badge_genre'}>{first_genre}</div>);
@@ -134,6 +152,7 @@ class MovieCardContent extends Component {
           return <div className="d_atmos"></div>
         }
       }
+
 
     return (
       <div className="movie_card">
@@ -180,23 +199,22 @@ class MovieCardContent extends Component {
           <div className="horaire_seance">
               {
                 this.state.badgeSelected ?
-                <img className="btn_resa click_to_action" src={btn_resa} onClick={this.handleResaBtnClick}alt="Boutton Reserver" /> :
-                <img className="btn_resa desactivated" src={btn_resa} alt="Boutton Reserver Désactivé" />
+                <img className="btn_resa click_to_action" data-modal="1" src={btn_resa} onClick={(e) => this.handleResaBtnClick(e)} alt="Boutton Reserver" /> :
+                <img className="btn_resa desactivated" data-modal="1" src={btn_resa} alt="Boutton Reserver Desactivé" />
               }
-              {
-                seance.map((day, index) => {
-                  return <DayBlock Day={day} badgeSelected={this.badgeSelected.bind(this)} />
-                })
-              }
-
+              {getDays(seance, handleBadgeSelected, badgeSelected)}
             </div>
         </div>
       </div>
     )
   }
+
+
+
   componentDidMount(){
     this.blurredBackgorundImage();
   }
+
   componentDidUpdate(){
     this.blurredBackgorundImage();
   }

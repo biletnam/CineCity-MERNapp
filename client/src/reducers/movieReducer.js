@@ -1,4 +1,4 @@
-import { GET_ALAFFICHE_MOVIES, GET_MOVIE } from '../actions/types';
+import { GET_ALAFFICHE_MOVIES, GET_MOVIE, UPDATE_MOVIE, UPDATE_MOVIE_SEANCE } from '../actions/types';
 
 const initialState = {
   alafficheMovies:[],
@@ -12,12 +12,24 @@ export default function(state = initialState, action) {
       return {
         ...state,
         alafficheMovies: action.payload
-      };
+    };
 
     case GET_MOVIE:
       return {
         ...state,
         movie: action.payload
+    };
+
+    case UPDATE_MOVIE:
+      return {
+        ...state
+    };
+
+    case UPDATE_MOVIE_SEANCE:
+      return {
+        ...state,
+        movieId: action.payload.movieId,
+        data: action.payload.data
     };
 
     default :

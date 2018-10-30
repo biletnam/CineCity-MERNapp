@@ -4,20 +4,25 @@ import * as moment from 'moment';
 
 //IMAGES IMPORT
 import logo from '../../img/header/logo_menu.svg';
-import arrow from '../../img/header/encoche_dropdown.svg';
 import btn_drop from '../../img/header/dropdown.svg';
-  //DROPDOWN MENU
-import btn_poster from '../../img/header/poster.svg';
-import btn_calandar from '../../img/header/calandar.svg';
-import btn_event from '../../img/header/event.svg';
-import btn_info from '../../img/header/info.svg';
+import bucket_button from '../../img/bucket.png';
+import BucketAnimated from '../../img/bucket.gif';
+
 
 class Header extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      navBarElements: ['A l\'affiche', 'Prochainement', 'Evenement', 'À propos' ]
+      navBarElements: ['A l\'affiche', 'Prochainement', 'Evenement', 'À propos' ],
+      basket: this.props.cookies.getAll({ path: '/basket' })
     };
+  }
+
+  handleBasketClick = (e) => {
+    if (e){
+      var modalCode = e.target.getAttribute("data-modal");
+      this.props.handleModalCall(modalCode);
+    }
   }
 
   render() {
@@ -33,11 +38,9 @@ class Header extends Component {
           </h1>
           <img  className="btn_drop" src={btn_drop} alt="Boutton menu" width="27px" height="27px" />
           <div className="" id="menu_dropdown">
-            <img src={arrow} alt="" className="arrow" width="15px" height="15px" />
-            <a href="" className="bright_up"><img alt="" src={btn_poster} width="35px" height="35px" /></a>
-            <a href="" className="bright_up"><img alt="" src={btn_calandar} width="35px" height="35px" /></a>
-            <a href="" className="bright_up"><img alt="" src={btn_event} width="35px" height="35px" /></a>
-            <a href="" className="bright_up"><img alt="" src={btn_info} width="35px" height="35px" /></a>
+            {
+              //Futur hamburger menu
+            }
           </div>
           <div className="menu">
             {
@@ -48,6 +51,13 @@ class Header extends Component {
               })
             }
           </div>
+          <img className="bucket_button"
+            src={bucket_button}
+            data-modal="2"
+            onClick={(e) => this.handleBasketClick(e)}
+            alt="Panier"
+            width="40px"
+            height="40px"/>
         </nav>
         <Date date={date} />
       </header>
